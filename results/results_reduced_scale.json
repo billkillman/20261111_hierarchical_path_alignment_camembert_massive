@@ -1,0 +1,162 @@
+{
+ "primary_metric": "leaf_macro_f1",
+ "direction": "max",
+ "metric_labels": {
+  "leaf_macro_f1": "Macro-F1 des feuilles",
+  "leaf_micro_f1": "Micro-F1 des feuilles",
+  "parent_accuracy": "Exactitude du parent",
+  "hierarchical_consistency_rate": "Cohérence parent-enfant",
+  "rare_class_macro_f1": "Macro-F1 des feuilles rares"
+ },
+ "dataset": {
+  "name": "mteb/amazon_massive_intent",
+  "config": "fr",
+  "split": "test",
+  "n_examples": 300
+ },
+ "approaches": [
+  {
+   "name": "CamemBERT + BCE (référence)",
+   "role": "reference",
+   "metrics": {
+    "leaf_macro_f1": 0.012989253393665159,
+    "leaf_micro_f1": 0.03333333333333333,
+    "parent_accuracy": 0.07,
+    "hierarchical_consistency_rate": 0.5933333333333334,
+    "rare_class_macro_f1": 0.011111111111111112
+   },
+   "ci95": {
+    "leaf_macro_f1": [
+     0.005286538529609572,
+     0.022506783316666643
+    ],
+    "leaf_micro_f1": [
+     0.013333333333333334,
+     0.056666666666666664
+    ],
+    "parent_accuracy": [
+     0.043333333333333335,
+     0.1
+    ],
+    "hierarchical_consistency_rate": [
+     0.5366666666666666,
+     0.6466666666666666
+    ],
+    "rare_class_macro_f1": [
+     0.0,
+     0.036630036630036625
+    ]
+   },
+   "latency_ms": {
+    "p50": 48.67,
+    "p95": 64.21
+   },
+   "notes": "Budget : 5 ex. par feuille (299 exemples) ; époque retenue 1/1 ; inférence = encodeur + tête seuls ; descriptions : gabarit à partir des libellés traduits ; empreinte du test : 34a90e71d76e95ba"
+  },
+  {
+   "name": "BCE + PathSimNCE",
+   "role": "new",
+   "metrics": {
+    "leaf_macro_f1": 0.016769069820391565,
+    "leaf_micro_f1": 0.03333333333333333,
+    "parent_accuracy": 0.13666666666666666,
+    "hierarchical_consistency_rate": 0.05,
+    "rare_class_macro_f1": 0.0
+   },
+   "ci95": {
+    "leaf_macro_f1": [
+     0.004142300194931774,
+     0.03083842069139905
+    ],
+    "leaf_micro_f1": [
+     0.013333333333333334,
+     0.056666666666666664
+    ],
+    "parent_accuracy": [
+     0.09666666666666666,
+     0.17333333333333334
+    ],
+    "hierarchical_consistency_rate": [
+     0.02666666666666667,
+     0.07666666666666666
+    ],
+    "rare_class_macro_f1": [
+     0.0,
+     0.0
+    ]
+   },
+   "latency_ms": {
+    "p50": 49.02,
+    "p95": 58.7
+   },
+   "notes": "Budget : 5 ex. par feuille (299 exemples) ; époque retenue 1/1 ; inférence = encodeur + tête seuls ; descriptions : gabarit à partir des libellés traduits ; empreinte du test : 34a90e71d76e95ba"
+  },
+  {
+   "name": "BCE + PathSimNCE + descriptions",
+   "role": "new",
+   "metrics": {
+    "leaf_macro_f1": 0.003931333404288477,
+    "leaf_micro_f1": 0.02666666666666667,
+    "parent_accuracy": 0.16,
+    "hierarchical_consistency_rate": 0.03,
+    "rare_class_macro_f1": 0.003129890453834116
+   },
+   "ci95": {
+    "leaf_macro_f1": [
+     0.0015817373461012314,
+     0.007442495315629644
+    ],
+    "leaf_micro_f1": [
+     0.01,
+     0.04666666666666667
+    ],
+    "parent_accuracy": [
+     0.12333333333333334,
+     0.20333333333333334
+    ],
+    "hierarchical_consistency_rate": [
+     0.013333333333333334,
+     0.05
+    ],
+    "rare_class_macro_f1": [
+     0.0,
+     0.014285714285714285
+    ]
+   },
+   "latency_ms": {
+    "p50": 49.8,
+    "p95": 60.93
+   },
+   "notes": "Budget : 5 ex. par feuille (299 exemples) ; époque retenue 1/1 ; inférence = encodeur + tête seuls ; descriptions : gabarit à partir des libellés traduits ; empreinte du test : 34a90e71d76e95ba"
+  }
+ ],
+ "phase": "public",
+ "scale": "reduced",
+ "seed": 42,
+ "date": "2026-11-11T03:56:59+00:00",
+ "environment": {
+  "python": "3.12.16",
+  "system": "Linux-7.0.0-1019-azure-x86_64-with-glibc2.41",
+  "cpu": 4,
+  "ram_gb": 15.6,
+  "device": "cpu",
+  "gpu": null,
+  "scale": "reduced",
+  "versions": {
+   "torch": "2.15.0+cpu",
+   "transformers": "5.22.2",
+   "datasets": "5.2.0",
+   "sentence-transformers": "6.2.0",
+   "scikit-learn": "1.9.1",
+   "numpy": "2.5.4",
+   "pandas": "3.1.1",
+   "openai": "3.49.0",
+   "xgboost": "3.4.1"
+  }
+ },
+ "service_calls": {
+  "n": 0,
+  "failures": 0,
+  "seconds": 0
+ }
+}

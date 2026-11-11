@@ -1,0 +1,165 @@
+{
+ "primary_metric": "leaf_macro_f1",
+ "direction": "max",
+ "metric_labels": {
+  "leaf_macro_f1": "Macro-F1 des feuilles",
+  "leaf_micro_f1": "Micro-F1 des feuilles",
+  "parent_accuracy": "Exactitude du parent",
+  "hierarchical_consistency_rate": "Cohérence parent-enfant",
+  "rare_class_macro_f1": "Macro-F1 des feuilles rares"
+ },
+ "dataset": {
+  "name": "mteb/amazon_massive_intent",
+  "config": "fr",
+  "split": "test",
+  "n_examples": 2974
+ },
+ "approaches": [
+  {
+   "name": "CamemBERT + BCE (référence)",
+   "role": "reference",
+   "metrics": {
+    "leaf_macro_f1": 0.8023340039853357,
+    "leaf_micro_f1": 0.875252185608608,
+    "parent_accuracy": 0.9122394082044385,
+    "hierarchical_consistency_rate": 0.9875588433086752,
+    "rare_class_macro_f1": 0.5562706961866625
+   },
+   "ci95": {
+    "leaf_macro_f1": [
+     0.7857055907989858,
+     0.8299287394341179
+    ],
+    "leaf_micro_f1": [
+     0.863147276395427,
+     0.8876933422999328
+    ],
+    "parent_accuracy": [
+     0.9014794889038332,
+     0.9223268325487559
+    ],
+    "hierarchical_consistency_rate": [
+     0.9835238735709482,
+     0.9912575655682583
+    ],
+    "rare_class_macro_f1": [
+     0.5115794093757574,
+     0.6411475538389889
+    ]
+   },
+   "latency_ms": {
+    "p50": 13.2,
+    "p95": 14.79
+   },
+   "notes": "Budget : train complet (11514 exemples) ; époque retenue 5/5 ; inférence = encodeur + tête seuls ; descriptions : gabarit à partir des libellés traduits ; empreinte du test : 1db330f45dc1c9b8"
+  },
+  {
+   "name": "BCE + PathSimNCE",
+   "role": "new",
+   "metrics": {
+    "leaf_macro_f1": 0.8355308706579126,
+    "leaf_micro_f1": 0.8819771351714862,
+    "parent_accuracy": 0.9229993275050438,
+    "hierarchical_consistency_rate": 0.9771351714862139,
+    "rare_class_macro_f1": 0.6684048207268022
+   },
+   "ci95": {
+    "leaf_macro_f1": [
+     0.8144480315464274,
+     0.8642459881536275
+    ],
+    "leaf_micro_f1": [
+     0.8695359784801614,
+     0.8937457969065232
+    ],
+    "parent_accuracy": [
+     0.9125756556825824,
+     0.9320780094149294
+    ],
+    "hierarchical_consistency_rate": [
+     0.9714189643577673,
+     0.9821788836583726
+    ],
+    "rare_class_macro_f1": [
+     0.6010589963220733,
+     0.7681456972655792
+    ]
+   },
+   "latency_ms": {
+    "p50": 12.94,
+    "p95": 15.15
+   },
+   "notes": "Budget : train complet (11514 exemples) ; époque retenue 5/5 ; inférence = encodeur + tête seuls ; descriptions : gabarit à partir des libellés traduits ; empreinte du test : 1db330f45dc1c9b8"
+  },
+  {
+   "name": "BCE + PathSimNCE + descriptions",
+   "role": "new",
+   "metrics": {
+    "leaf_macro_f1": 0.8247910396468204,
+    "leaf_micro_f1": 0.8799596503026227,
+    "parent_accuracy": 0.917955615332885,
+    "hierarchical_consistency_rate": 0.9747814391392065,
+    "rare_class_macro_f1": 0.6333346075346425
+   },
+   "ci95": {
+    "leaf_macro_f1": [
+     0.8035363012102493,
+     0.8564352840368854
+    ],
+    "leaf_micro_f1": [
+     0.867518493611298,
+     0.8920645595158037
+    ],
+    "parent_accuracy": [
+     0.9068594485541358,
+     0.9277067921990585
+    ],
+    "hierarchical_consistency_rate": [
+     0.968392737054472,
+     0.980161398789509
+    ],
+    "rare_class_macro_f1": [
+     0.5606155808309264,
+     0.7380316397652614
+    ]
+   },
+   "latency_ms": {
+    "p50": 13.09,
+    "p95": 15.42
+   },
+   "notes": "Budget : train complet (11514 exemples) ; époque retenue 4/5 ; inférence = encodeur + tête seuls ; descriptions : gabarit à partir des libellés traduits ; empreinte du test : 1db330f45dc1c9b8"
+  }
+ ],
+ "phase": "public",
+ "scale": "full",
+ "seed": 42,
+ "date": "2026-11-11T04:17:06+00:00",
+ "environment": {
+  "python": "3.13.16",
+  "system": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "cpu": 2,
+  "ram_gb": 12.7,
+  "device": "cuda",
+  "gpu": {
+   "name": "Tesla T4",
+   "memory_gb": 14.6
+  },
+  "scale": "full",
+  "versions": {
+   "torch": "2.14.1+cu130",
+   "transformers": "5.22.1",
+   "datasets": "4.8.5",
+   "sentence-transformers": "5.7.0",
+   "scikit-learn": "1.6.1",
+   "numpy": "2.4.6",
+   "pandas": "2.2.3",
+   "openai": "2.54.0",
+   "xgboost": "3.4.1"
+  }
+ },
+ "service_calls": {
+  "n": 0,
+  "failures": 0,
+  "seconds": 0
+ }
+}
